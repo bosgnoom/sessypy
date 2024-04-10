@@ -12,7 +12,7 @@ class SessyApi:
         self.username = username
 
         self.session = aiohttp.ClientSession(
-            auth=BasicAuth(username, password),
+            auth = BasicAuth(username, password),
             raise_for_status = True,
             timeout = aiohttp.ClientTimeout(total=5)
         )
@@ -27,7 +27,11 @@ class SessyApi:
             url = self._command_url(command)
             _LOGGER.debug(f"Sending {method} request to {url} with data {data}")
             response = await self.session.request(method, url, json = data)
-            return await response.json()
+
+            if command == SessyApiCommand.ERROR_LOG:
+                return await response.text() 
+            else: 
+                return await response.json()
         
         except ClientConnectionError as e:
             _LOGGER.debug(f"{method} request to {url} raised a connection error: {e}")

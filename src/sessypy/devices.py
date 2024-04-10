@@ -55,6 +55,9 @@ class SessyDevice():
 
     async def set_wifi_credentials(self, ssid: str, password: str):
         return await self.api.post(SessyApiCommand.WIFI_STA_CREDENTIALS, {"ssid":ssid, "pass":password})
+    
+    async def get_error_log(self):
+        return await self.api.get(SessyApiCommand.ERROR_LOG)
 
     async def close(self):
         await self.api.close()

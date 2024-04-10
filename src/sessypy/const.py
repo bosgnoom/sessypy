@@ -27,6 +27,8 @@ class SessyApiCommand(str, Enum):
     SYSTEM_RESTART = f"{API_VERSION_1}/system/restart"
     WIFI_STA_CREDENTIALS = f"{API_VERSION_1}/wifi_sta/credentials"
 
+    ERROR_LOG = "errors"
+
 
 class SessyPowerStrategy(str, Enum):
     API = "POWER_STRATEGY_API"

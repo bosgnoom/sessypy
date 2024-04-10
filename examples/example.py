@@ -46,7 +46,7 @@ async def run():
                 # Dynamic mode from 1.6.5 and up
                 print("- Dynamic mode schedule -")
                 result = await device.get_dynamic_schedule()
-                pprint.pprint(result)
+                pprint.pprint(result, width=150)
                 print("")
 
         elif isinstance(device, SessyP1Meter):
