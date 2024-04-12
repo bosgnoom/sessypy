@@ -5,7 +5,6 @@ from config import *
 import asyncio
 from sessypy.devices import SessyDevice, get_sessy_device
 from sessypy.errorlog import get_error_log
-import pprint
 
 import logging
 # While debugging
@@ -28,10 +27,14 @@ async def run():
         logging.info(f"=== Sessy Device at { device.host } ===")
         logging.info(f"S/N: {device.serial_number}")
         
-        # Get errors from sessypy
+        # Get errors from sessypi
         errors = await get_error_log(device)
 
-        pprint.pprint(errors, width=150)
+        # Convert into InfluxDB's line protocol
+        # myMeasurement,tag1=value1,tag2=value2 fieldKey="fieldValue" 1556813561098000000 (unix timestamp in ns)
+        for err in errors:
+            date_obj, error_type, message = err
+            # print(f'errors,device={device.serial_number} {error_type}={message} {int(date_obj.timestamp()*10**9)}')
         
         await device.close()
 

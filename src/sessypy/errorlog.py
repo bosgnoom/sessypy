@@ -1,6 +1,5 @@
 # Import modules
-# import asyncio
-from sessypy.devices import SessyDevice
+from .devices import SessyDevice
 from bs4 import BeautifulSoup
 from datetime import datetime
 import logging
