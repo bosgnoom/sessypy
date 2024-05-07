@@ -9,7 +9,8 @@ import requests
 
 import logging
 # While debugging
-logging.basicConfig(level=logging.DEBUG)
+#logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig()
 
 
 async def run():
