@@ -33,6 +33,7 @@ async def run():
         # myMeasurement,tag1=value1,tag2=value2 fieldKey="fieldValue" 1556813561098000000 (unix timestamp in ns)
         for err in errors:
             date_obj, error_type, message = err
+            message = message.replace('"', '')
             payload.append(f'errors,device={device.serial_number} {error_type.replace(" ", "_")}="{message}" {int(date_obj.timestamp())}')
         
         await device.close()
