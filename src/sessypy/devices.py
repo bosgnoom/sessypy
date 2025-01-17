@@ -66,6 +66,9 @@ class SessyBattery(SessyDevice):
     async def get_dynamic_schedule(self):
         return await self.api.get(SessyApiCommand.DYNAMIC_SCHEDULE)
     
+    async def get_energy_status(self):
+        return await self.api.get(SessyApiCommand.ENERGY_STATUS)
+    
     async def get_power_status(self):
         return await self.api.get(SessyApiCommand.POWER_STATUS)
     
@@ -101,6 +104,9 @@ class SessyCTMeter(SessyMeter):
     
     async def get_ct_details(self):
         return await self.api.get(SessyApiCommand.CT_DETAILS)
+    
+    async def get_energy_status(self):
+        return await self.api.get(SessyApiCommand.ENERGY_STATUS)
 	
 
 """Connect to the API and determine the device type"""
