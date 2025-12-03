@@ -1,15 +1,17 @@
-from enum import Enum
+from enum import StrEnum
 
 API_VERSION_1 = "api/v1"
 API_VERSION_2 = "api/v2"
 
-class SessyApiCommand(str, Enum):
+class SessyApiCommand(StrEnum):
     CT_DETAILS = f"{API_VERSION_1}/ct/details"
-    DYNAMIC_SCHEDULE = f"{API_VERSION_1}/dynamic/schedule"
+    DYNAMIC_SCHEDULE_LEGACY = f"{API_VERSION_1}/dynamic/schedule"
+    DYNAMIC_SCHEDULE = f"{API_VERSION_2}/dynamic/schedule"
 
     ENERGY_STATUS = f"{API_VERSION_1}/energy/status"
 
     METER_GRID_TARGET = f"{API_VERSION_1}/meter/grid_target"
+    METER_STATUS = f"{API_VERSION_1}/meter/status"
     
     NETWORK_SCAN = f"{API_VERSION_1}/network/scan"
     NETWORK_STATUS = f"{API_VERSION_1}/network/status"
@@ -32,7 +34,7 @@ class SessyApiCommand(str, Enum):
     ERROR_LOG = "errors"
 
 
-class SessyPowerStrategy(str, Enum):
+class SessyPowerStrategy(StrEnum):
     API = "POWER_STRATEGY_API"
     NOM = "POWER_STRATEGY_NOM"
     ROI = "POWER_STRATEGY_ROI"
@@ -40,7 +42,7 @@ class SessyPowerStrategy(str, Enum):
     SESSY_CONNECT = "POWER_STRATEGY_SESSY_CONNECT"
     ECO = "POWER_STRATEGY_ECO"
 
-class SessySystemState(str, Enum):
+class SessySystemState(StrEnum):
     RUNNING_SAFE = "SYSTEM_STATE_RUNNING_SAFE"
     STANDBY = "SYSTEM_STATE_STANDBY"
     WAITING_FOR_SAFE = "SYSTEM_STATE_WAITING_FOR_SAFE_SITUATION"
@@ -56,19 +58,19 @@ class SessySystemState(str, Enum):
     BATTERY_EMPTY = "SYSTEM_STATE_BATTERY_EMPTY"
     OVERRIDE_BATTERY_UNDERVOLTAGE = "SYSTEM_STATE_OVERRIDE_BATTERY_UNDERVOLTAGE"
 
-class SessyP1State(str, Enum):
+class SessyP1State(StrEnum):
     NOT_CONNECTED = "P1_NOT_CONNECTED"
     DATA_VALIDITY_ERROR = "P1_DATAVALIDITY_ERR"
     VERSION_ERROR = "P1_VERSION_ERR"
     PARSE_ERROR = "P1_PARSE_ERR"
     OK = "P1_OK"
 
-class SessyOtaTarget(str, Enum):
+class SessyOtaTarget(StrEnum):
     SELF = "OTA_TARGET_SELF"
     SERIAL = "OTA_TARGET_SERIAL"
     ALL = "OTA_TARGET_ALL"  # available as of version 1.5.1
 
-class SessyOtaState(str, Enum):
+class SessyOtaState(StrEnum):
     FAILED = "OTA_UPDATE_FAILED"
     DISABLED = "OTA_DISABLED"
     INACTIVE = "OTA_INACTIVE"
